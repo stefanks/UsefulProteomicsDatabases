@@ -1,0 +1,8 @@
+language: csharp
+solution: UsefulProteomicsDatabases.sln
+install:
+  - nuget restore UsefulProteomicsDatabases.sln
+  - nuget install NUnit.Console -OutputDirectory testrunner
+script:
+  - xbuild UsefulProteomicsDatabases.sln 
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Test/bin/Debug/Test.dll

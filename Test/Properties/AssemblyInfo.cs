@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UsefulProteomicsDatabases")]
+[assembly: AssemblyTitle("Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Stefan Solntsev")]
-[assembly: AssemblyProduct("UsefulProteomicsDatabases")]
-[assembly: AssemblyCopyright("Copyright 2016 Stefan Solntsev")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("16f857b5-4942-4fa2-b198-bd4d14c1b2e4")]
+[assembly: Guid("512e5cb1-36ef-474c-aa25-91c44186baca")]
 
 // Version information for an assembly consists of the following four values:
 //

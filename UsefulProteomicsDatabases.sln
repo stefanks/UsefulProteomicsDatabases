@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsefulProteomicsDatabases", "UsefulProteomicsDatabases\UsefulProteomicsDatabases.csproj", "{16F857B5-4942-4FA2-B198-BD4D14C1B2E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{512E5CB1-36EF-474C-AA25-91C44186BACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{16F857B5-4942-4FA2-B198-BD4D14C1B2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16F857B5-4942-4FA2-B198-BD4D14C1B2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16F857B5-4942-4FA2-B198-BD4D14C1B2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512E5CB1-36EF-474C-AA25-91C44186BACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512E5CB1-36EF-474C-AA25-91C44186BACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512E5CB1-36EF-474C-AA25-91C44186BACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512E5CB1-36EF-474C-AA25-91C44186BACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
