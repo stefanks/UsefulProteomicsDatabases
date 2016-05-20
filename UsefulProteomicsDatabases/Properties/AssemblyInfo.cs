@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("UsefulProteomicsDatabases")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Useful Proteomics Databases")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Stefan Solntsev")]
 [assembly: AssemblyProduct("UsefulProteomicsDatabases")]
