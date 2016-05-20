@@ -54,19 +54,19 @@ namespace UsefulProteomicsDatabases
         {
             DownloadUnimod();
             if (!File.Exists(unimodLocation)) {
-                Console.WriteLine("Unimod database did not exist, writing to disk");
+                //Console.WriteLine("Unimod database did not exist, writing to disk");
                 File.Move(unimodLocation + ".temp", unimodLocation);
                 return;
             }
             bool ye = FilesAreEqual_Hash(unimodLocation + ".temp",unimodLocation);
             if (ye)
             {
-                Console.WriteLine("Unimod database is up to date, doing nothing");
+                //Console.WriteLine("Unimod database is up to date, doing nothing");
                 File.Delete(unimodLocation + ".temp");
             }
             else
             {
-                Console.WriteLine("Unimod database updated, saving old version as backup");
+                //Console.WriteLine("Unimod database updated, saving old version as backup");
                 File.Move(unimodLocation, unimodLocation + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss"));
                 File.Move(unimodLocation + ".temp", unimodLocation);
             }
@@ -77,18 +77,18 @@ namespace UsefulProteomicsDatabases
             DownloadPsiMod();
             if (!File.Exists(psimodLocation))
             {
-                Console.WriteLine("PSI-MOD database did not exist, writing to disk");
+                //Console.WriteLine("PSI-MOD database did not exist, writing to disk");
                 File.Move(psimodLocation + ".temp", psimodLocation);
                 return;
             }
             if (FilesAreEqual_Hash(psimodLocation + ".temp", psimodLocation))
             {
-                Console.WriteLine("PSI-MOD database is up to date, doing nothing");
+                //Console.WriteLine("PSI-MOD database is up to date, doing nothing");
                 File.Delete(psimodLocation + ".temp");
             }
             else
             {
-                Console.WriteLine("PSI-MOD database updated, saving old version as backup");
+                //Console.WriteLine("PSI-MOD database updated, saving old version as backup");
                 File.Move(psimodLocation, psimodLocation + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss"));
                 File.Move(psimodLocation + ".temp", psimodLocation);
             }
@@ -100,18 +100,18 @@ namespace UsefulProteomicsDatabases
             DownloadElements();
             if (!File.Exists(elementLocation))
             {
-                Console.WriteLine("Element database did not exist, writing to disk");
+                //Console.WriteLine("Element database did not exist, writing to disk");
                 File.Move(elementLocation + ".temp", elementLocation);
                 return;
             }
             if (FilesAreEqual_Hash(elementLocation + ".temp", elementLocation))
             {
-                Console.WriteLine("Element database is up to date, doing nothing");
+                //Console.WriteLine("Element database is up to date, doing nothing");
                 File.Delete(elementLocation + ".temp");
             }
             else
             {
-                Console.WriteLine("Element database updated, saving old version as backup");
+                //Console.WriteLine("Element database updated, saving old version as backup");
                 File.Move(elementLocation, elementLocation + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss"));
                 File.Move(elementLocation + ".temp", elementLocation);
             }
