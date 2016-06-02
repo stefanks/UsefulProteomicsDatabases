@@ -98,7 +98,7 @@ namespace UsefulProteomicsDatabases
                     {
                         // New Element!
                         element = new Element(atomicSymbol, atomicNumber, averageMass);
-                        PeriodicTable.Add(element.AtomicSymbol, element);
+                        PeriodicTable.Add(element);
                     }
                     //Console.WriteLine("Trying to add isotope with mass number " + massNumber + " to element " + element);
                     element.AddIsotope(massNumber, atomicMass, abundance);
