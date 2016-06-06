@@ -29,8 +29,6 @@ namespace UsefulProteomicsDatabases
     {
         public static void Load(string elementLocation)
         {
-            if (PeriodicTable.Count() > 0)
-                return;
             using (StreamReader sr = new StreamReader(elementLocation))
             {
                 // Read the stream to a string, and write the string to the console.
