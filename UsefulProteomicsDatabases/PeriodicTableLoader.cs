@@ -29,8 +29,6 @@ namespace UsefulProteomicsDatabases
     {
         public static void Load(string elementLocation)
         {
-            if (PeriodicTable.Count() > 0)
-                return;
             using (StreamReader sr = new StreamReader(elementLocation))
             {
                 // Read the stream to a string, and write the string to the console.
@@ -98,7 +96,7 @@ namespace UsefulProteomicsDatabases
                     {
                         // New Element!
                         element = new Element(atomicSymbol, atomicNumber, averageMass);
-                        PeriodicTable.Add(element.AtomicSymbol, element);
+                        PeriodicTable.Add(element);
                     }
                     //Console.WriteLine("Trying to add isotope with mass number " + massNumber + " to element " + element);
                     element.AddIsotope(massNumber, atomicMass, abundance);
