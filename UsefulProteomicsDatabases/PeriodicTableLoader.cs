@@ -41,32 +41,22 @@ namespace UsefulProteomicsDatabases
                 Element element = null;
                 do
                 {
-                    //Console.WriteLine(line);
                     int atomicNumber = Convert.ToInt32(Regex.Match(line, @"\d+").Value);
-                    //Console.WriteLine("atomicNumber = " + atomicNumber);
 
                     line = sr.ReadLine();
-                    //Console.WriteLine(line);
                     string atomicSymbol = Regex.Match(line, @"[A-Za-z]+$").Value;
-                    //Console.WriteLine("atomicSymbol = " + atomicSymbol);
 
                     line = sr.ReadLine();
-                    //Console.WriteLine(line);
                     int massNumber = Convert.ToInt32(Regex.Match(line, @"\d+").Value);
-                    //Console.WriteLine("massNumber = " + massNumber);
 
                     line = sr.ReadLine();
-                    //Console.WriteLine(line);
                     double atomicMass = Convert.ToDouble(Regex.Match(line, @"[\d\.]+").Value);
-                    //Console.WriteLine("atomicMass = " + atomicMass);
 
                     line = sr.ReadLine();
-                    //Console.WriteLine(line);
                     double abundance = -1;
                     if (Regex.Match(line, @"[\d\.]+").Success == true)
                     {
                         abundance = Convert.ToDouble(Regex.Match(line, @"[\d\.]+").Value);
-                        //Console.WriteLine("abundance = " + abundance);
                     }
                     else
                     {
@@ -78,7 +68,6 @@ namespace UsefulProteomicsDatabases
                     }
 
                     line = sr.ReadLine();
-                    //Console.WriteLine(line);
                     double averageMass = -1;
                     if (Regex.Match(line, @"\[").Success == true)
                     {
@@ -89,16 +78,13 @@ namespace UsefulProteomicsDatabases
                     }
                     else
                         averageMass = Convert.ToDouble(Regex.Match(line, @"[\d\.]+").Value);
-                    //Console.WriteLine("averageMass = " + averageMass);
 
                     
                     if (atomicNumber != prevAtomicNumber)
                     {
-                        // New Element!
                         element = new Element(atomicSymbol, atomicNumber, averageMass);
                         PeriodicTable.Add(element);
                     }
-                    //Console.WriteLine("Trying to add isotope with mass number " + massNumber + " to element " + element);
                     element.AddIsotope(massNumber, atomicMass, abundance);
 
                     line = sr.ReadLine();
