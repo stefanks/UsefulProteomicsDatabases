@@ -28,12 +28,7 @@ namespace UsefulProteomicsDatabases
         public static string unimodLocation;
         public static string psimodLocation;
         public static string elementLocation;
-
-        private static string unimodURI  = "http://www.unimod.org/xml/unimod_tables.xml";
-        private static string psimodURI  = "http://psidev.cvs.sourceforge.net/viewvc/psidev/psi/mod/data/PSI-MOD.obo.xml";
-        private static string elementURI = "http://www.physics.nist.gov/cgi-bin/Compositions/stand_alone.pl?ele=&all=all&ascii=ascii2&isotype=some";
-
-
+        
         static bool FilesAreEqual_Hash(string first, string second)
         {
             var a = File.Open(first, FileMode.Open, FileAccess.Read);
@@ -93,8 +88,7 @@ namespace UsefulProteomicsDatabases
                 File.Move(psimodLocation + ".temp", psimodLocation);
             }
         }
-
-
+        
         public static void UpdateElements()
         {
             DownloadElements();
@@ -147,21 +141,19 @@ namespace UsefulProteomicsDatabases
         private static void DownloadPsiMod()
         {
             WebClient Client = new WebClient();
-            Client.DownloadFile(psimodURI, psimodLocation+".temp");
+            Client.DownloadFile(URLs.psimodURI, psimodLocation+".temp");
         }
 
         private static void DownloadUnimod()
         {
             WebClient Client = new WebClient();
-
-            Client.DownloadFile(unimodURI, unimodLocation + ".temp");
+            Client.DownloadFile(URLs.unimodURI, unimodLocation + ".temp");
         }
 
         private static void DownloadElements()
         {
             WebClient Client = new WebClient();
-            Client.DownloadFile(elementURI, elementLocation + ".temp");
-            
+            Client.DownloadFile(URLs.elementURI, elementLocation + ".temp");
         }
     }
 }
