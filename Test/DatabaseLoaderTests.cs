@@ -15,9 +15,9 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with Chemistry Library. If not, see <http://www.gnu.org/licenses/>
 
-using UsefulProteomicsDatabases;
 using NUnit.Framework;
 using System.IO;
+using UsefulProteomicsDatabases;
 
 namespace Test
 {
@@ -48,5 +48,12 @@ namespace Test
             Loaders.UpdateElements();
         }
 
+        [Test]
+        public void TestUpdateUniprot()
+        {
+            Loaders.uniprotLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "ptmlist.txt");
+            Loaders.UpdateUniprot();
+            Loaders.UpdateUniprot();
+        }
     }
 }

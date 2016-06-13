@@ -79,7 +79,7 @@ namespace UsefulProteomicsDatabases
                     else
                         averageMass = Convert.ToDouble(Regex.Match(line, @"[\d\.]+").Value);
 
-                    
+
                     if (atomicNumber != prevAtomicNumber)
                     {
                         element = new Element(atomicSymbol, atomicNumber, averageMass);
@@ -94,6 +94,8 @@ namespace UsefulProteomicsDatabases
                 } while (line.Contains("Atomic Number"));
             }
 
+            PeriodicTable.Validate(1e-2);
+            PeriodicTable.Validate(1e-15, false);
         }
     }
 }
