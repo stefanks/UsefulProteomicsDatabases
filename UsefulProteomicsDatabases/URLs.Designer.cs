@@ -86,5 +86,14 @@ namespace UsefulProteomicsDatabases {
                 return ResourceManager.GetString("unimodURI", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.uniprot.org/docs/ptmlist.txt.
+        /// </summary>
+        internal static string uniprotURI {
+            get {
+                return ResourceManager.GetString("uniprotURI", resourceCulture);
+            }
+        }
     }
 }

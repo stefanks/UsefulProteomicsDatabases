@@ -126,4 +126,7 @@
   <data name="unimodURI" xml:space="preserve">
     <value>http://www.unimod.org/xml/unimod_tables.xml</value>
   </data>
+  <data name="uniprotURI" xml:space="preserve">
+    <value>http://www.uniprot.org/docs/ptmlist.txt</value>
+  </data>
 </root>
