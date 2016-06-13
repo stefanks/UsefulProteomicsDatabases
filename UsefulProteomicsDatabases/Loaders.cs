@@ -170,6 +170,8 @@ namespace UsefulProteomicsDatabases
 
         public static Dictionary<int, ChemicalFormulaModification> LoadUniprot()
         {
+            if (!File.Exists(uniprotLocation))
+                UpdateUniprot();
             Dictionary<int, ChemicalFormulaModification> modifications = new Dictionary<int, ChemicalFormulaModification>();
             using (StreamReader uniprot_mods = new StreamReader(uniprotLocation))
             {
