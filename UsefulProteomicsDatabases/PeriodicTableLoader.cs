@@ -93,9 +93,6 @@ namespace UsefulProteomicsDatabases
                     prevAtomicNumber = atomicNumber;
                 } while (line.Contains("Atomic Number"));
             }
-
-            PeriodicTable.Validate(1e-2);
-            PeriodicTable.Validate(1e-15, false);
         }
     }
 }
