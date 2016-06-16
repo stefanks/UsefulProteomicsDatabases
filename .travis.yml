@@ -4,6 +4,5 @@ install:
   - nuget restore UsefulProteomicsDatabases.sln
   - nuget install NUnit.Console -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Debug UsefulProteomicsDatabases.sln 
-  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Test/bin/Debug/Test.dll
-  - xbuild /p:Configuration=Release UsefulProteomicsDatabases.sln 
+  - xbuild /p:Configuration=TestAndRelease UsefulProteomicsDatabases.sln 
+  - mono ./testrunner/NUnit.ConsoleRunner.*/tools/nunit3-console.exe ./Test/bin/Release/Test.dll
