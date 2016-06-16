@@ -27,33 +27,33 @@ namespace Test
         [Test]
         public void TestUpdateUnimod()
         {
-            Loaders.unimodLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "unimod_tables.xml");
-            Loaders.UpdateUnimod();
-            Loaders.UpdateUnimod();
+            var unimodLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "unimod_tables.xml");
+            Loaders.UpdateUnimod(unimodLocation);
+            Loaders.UpdateUnimod(unimodLocation);
         }
 
         [Test]
         public void TestUpdatePsiMod()
         {
-            Loaders.psimodLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "PSI-MOD.obo.xml");
-            Loaders.UpdatePsiMod();
-            Loaders.UpdatePsiMod();
+            var psimodLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "PSI-MOD.obo.xml");
+            Loaders.UpdatePsiMod(psimodLocation);
+            Loaders.UpdatePsiMod(psimodLocation);
         }
 
         [Test]
         public void TestUpdateElements()
         {
-            Loaders.elementLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "elements.dat");
-            Loaders.UpdateElements();
-            Loaders.UpdateElements();
+            var elementLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "elements.dat");
+            Loaders.UpdateElements(elementLocation);
+            Loaders.UpdateElements(elementLocation);
         }
 
         [Test]
         public void TestUpdateUniprot()
         {
-            Loaders.uniprotLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "ptmlist.txt");
-            Loaders.UpdateUniprot();
-            Loaders.UpdateUniprot();
+            var uniprotLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "ptmlist.txt");
+            Loaders.UpdateUniprot(uniprotLocation);
+            Loaders.UpdateUniprot(uniprotLocation);
         }
     }
 }

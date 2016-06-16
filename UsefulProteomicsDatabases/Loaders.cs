@@ -28,11 +28,6 @@ namespace UsefulProteomicsDatabases
 {
     public class Loaders
     {
-        public static string unimodLocation;
-        public static string psimodLocation;
-        public static string elementLocation;
-        public static string uniprotLocation;
-
         static bool FilesAreEqual_Hash(string first, string second)
         {
             var a = File.Open(first, FileMode.Open, FileAccess.Read);
@@ -49,9 +44,9 @@ namespace UsefulProteomicsDatabases
             return true;
         }
 
-        public static void UpdateUniprot()
+        public static void UpdateUniprot(string uniprotLocation)
         {
-            DownloadUniprot();
+            DownloadUniprot(uniprotLocation);
             if (!File.Exists(uniprotLocation))
             {
                 Console.WriteLine("Uniprot database did not exist, writing to disk");
@@ -72,9 +67,9 @@ namespace UsefulProteomicsDatabases
             }
         }
 
-        public static void UpdateUnimod()
+        public static void UpdateUnimod(string unimodLocation)
         {
-            DownloadUnimod();
+            DownloadUnimod(unimodLocation);
             if (!File.Exists(unimodLocation))
             {
                 Console.WriteLine("Unimod database did not exist, writing to disk");
@@ -95,9 +90,9 @@ namespace UsefulProteomicsDatabases
             }
         }
 
-        public static void UpdatePsiMod()
+        public static void UpdatePsiMod(string psimodLocation)
         {
-            DownloadPsiMod();
+            DownloadPsiMod(psimodLocation);
             if (!File.Exists(psimodLocation))
             {
                 Console.WriteLine("PSI-MOD database did not exist, writing to disk");
@@ -117,9 +112,9 @@ namespace UsefulProteomicsDatabases
             }
         }
 
-        public static void UpdateElements()
+        public static void UpdateElements(string elementLocation)
         {
-            DownloadElements();
+            DownloadElements(elementLocation);
             if (!File.Exists(elementLocation))
             {
                 Console.WriteLine("Element database did not exist, writing to disk");
@@ -139,40 +134,39 @@ namespace UsefulProteomicsDatabases
             }
         }
 
-        public static void LoadElements()
+        public static void LoadElements(string elementLocation)
         {
             if (!File.Exists(elementLocation))
-                UpdateElements();
+                UpdateElements(elementLocation);
             PeriodicTableLoader.Load(elementLocation);
 
         }
 
-        public static unimod LoadUnimod()
+        public static unimod LoadUnimod(string unimodLocation)
         {
             var unimodSerializer = new XmlSerializer(typeof(unimod));
 
             if (!File.Exists(unimodLocation))
-                UpdateUnimod();
+                UpdateUnimod(unimodLocation);
             return unimodSerializer.Deserialize(new FileStream(unimodLocation, FileMode.Open)) as unimod;
         }
 
 
-        public static obo LoadPsiMod()
+        public static obo LoadPsiMod(string psimodLocation)
         {
             var psimodSerializer = new XmlSerializer(typeof(obo));
 
             if (!File.Exists(psimodLocation))
-                UpdatePsiMod();
+                UpdatePsiMod(psimodLocation);
             return psimodSerializer.Deserialize(new FileStream(psimodLocation, FileMode.Open)) as obo;
         }
-
-        private static readonly Regex PSI_MOD_ACCESSION_NUMBER_REGEX = new Regex(@"(.+); (\d+)\.");
-
-        public static Dictionary<int, ChemicalFormulaModification> LoadUniprot()
+        
+        public static Dictionary<int, ChemicalFormulaModification> LoadUniprot(string uniprotLocation)
         {
             if (!File.Exists(uniprotLocation))
-                UpdateUniprot();
+                UpdateUniprot(uniprotLocation);
             Dictionary<int, ChemicalFormulaModification> modifications = new Dictionary<int, ChemicalFormulaModification>();
+            var PSI_MOD_ACCESSION_NUMBER_REGEX = new Regex(@"(.+); (\d+)\.");
             using (StreamReader uniprot_mods = new StreamReader(uniprotLocation))
             {
                 string feature_type = null;
@@ -210,25 +204,25 @@ namespace UsefulProteomicsDatabases
             return modifications;
         }
 
-        private static void DownloadPsiMod()
+        private static void DownloadPsiMod(string psimodLocation)
         {
             WebClient Client = new WebClient();
             Client.DownloadFile(URLs.psimodURI, psimodLocation + ".temp");
         }
 
-        private static void DownloadUnimod()
+        private static void DownloadUnimod(string unimodLocation)
         {
             WebClient Client = new WebClient();
             Client.DownloadFile(URLs.unimodURI, unimodLocation + ".temp");
         }
 
-        private static void DownloadElements()
+        private static void DownloadElements(string elementLocation)
         {
             WebClient Client = new WebClient();
             Client.DownloadFile(URLs.elementURI, elementLocation + ".temp");
         }
 
-        private static void DownloadUniprot()
+        private static void DownloadUniprot(string uniprotLocation)
         {
             WebClient Client = new WebClient();
             Client.DownloadFile(URLs.uniprotURI, uniprotLocation + ".temp");
