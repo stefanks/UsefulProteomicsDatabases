@@ -26,7 +26,7 @@ using System.Xml.Serialization;
 
 namespace UsefulProteomicsDatabases
 {
-    public class Loaders
+    public static class Loaders
     {
         static bool FilesAreEqual_Hash(string first, string second)
         {
@@ -160,7 +160,7 @@ namespace UsefulProteomicsDatabases
                 UpdatePsiMod(psimodLocation);
             return psimodSerializer.Deserialize(new FileStream(psimodLocation, FileMode.Open)) as obo;
         }
-        
+
         public static Dictionary<int, ChemicalFormulaModification> LoadUniprot(string uniprotLocation)
         {
             if (!File.Exists(uniprotLocation))
