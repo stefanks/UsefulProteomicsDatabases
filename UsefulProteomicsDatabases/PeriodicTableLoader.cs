@@ -79,12 +79,13 @@ namespace UsefulProteomicsDatabases
                     else
                         averageMass = Convert.ToDouble(Regex.Match(line, @"[\d\.]+").Value);
 
-
                     if (atomicNumber != prevAtomicNumber)
                     {
                         element = new Element(atomicSymbol, atomicNumber, averageMass);
                         PeriodicTable.Add(element);
                     }
+                    if (element == null)
+                        throw new InvalidDataException("Element is null, problem with the data");
                     element.AddIsotope(massNumber, atomicMass, abundance);
 
                     line = sr.ReadLine();
