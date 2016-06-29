@@ -142,23 +142,23 @@ namespace UsefulProteomicsDatabases
 
         }
 
-        public static unimod LoadUnimod(string unimodLocation)
+        public static Generated.unimod LoadUnimod(string unimodLocation)
         {
-            var unimodSerializer = new XmlSerializer(typeof(unimod));
+            var unimodSerializer = new XmlSerializer(typeof(Generated.unimod));
 
             if (!File.Exists(unimodLocation))
                 UpdateUnimod(unimodLocation);
-            return unimodSerializer.Deserialize(new FileStream(unimodLocation, FileMode.Open)) as unimod;
+            return unimodSerializer.Deserialize(new FileStream(unimodLocation, FileMode.Open)) as Generated.unimod;
         }
 
 
-        public static obo LoadPsiMod(string psimodLocation)
+        public static Generated.obo LoadPsiMod(string psimodLocation)
         {
-            var psimodSerializer = new XmlSerializer(typeof(obo));
+            var psimodSerializer = new XmlSerializer(typeof(Generated.obo));
 
             if (!File.Exists(psimodLocation))
                 UpdatePsiMod(psimodLocation);
-            return psimodSerializer.Deserialize(new FileStream(psimodLocation, FileMode.Open)) as obo;
+            return psimodSerializer.Deserialize(new FileStream(psimodLocation, FileMode.Open)) as Generated.obo;
         }
 
         public static Dictionary<int, ChemicalFormulaModification> LoadUniprot(string uniprotLocation)
