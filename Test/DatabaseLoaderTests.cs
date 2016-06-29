@@ -15,15 +15,18 @@
 // You should have received a copy of the GNU Lesser General Public
 // License along with Chemistry Library. If not, see <http://www.gnu.org/licenses/>
 
+using Chemistry;
 using NUnit.Framework;
+using System;
 using System.IO;
 using UsefulProteomicsDatabases;
 
 namespace Test
 {
     [TestFixture]
-    public class DatabaseLoaderTests { 
-    
+    public class DatabaseLoaderTests
+    {
+
         [Test]
         public void TestUpdateUnimod()
         {
@@ -44,8 +47,11 @@ namespace Test
         public void TestUpdateElements()
         {
             var elementLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "elements.dat");
+            Loaders.LoadElements(elementLocation);
             Loaders.UpdateElements(elementLocation);
-            Loaders.UpdateElements(elementLocation);
+            Assert.Throws<ArgumentException>(() => { Loaders.LoadElements(elementLocation); });
+            Assert.AreEqual(ValidationResult.PassedAbundanceValidation, PeriodicTable.ValidateAbundances(1e-15).ThisValidationResult);
+            Assert.AreEqual(ValidationResult.PassedAverageMassValidation, PeriodicTable.ValidateAverageMasses(1e-2).ThisValidationResult);
         }
 
         [Test]
