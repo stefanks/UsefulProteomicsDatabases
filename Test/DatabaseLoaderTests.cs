@@ -38,7 +38,7 @@ namespace Test
         [Test]
         public void TestUpdatePsiMod()
         {
-            var psimodLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "PSI-MOD.obo.xml");
+            var psimodLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "lal.xml");
             Loaders.UpdatePsiMod(psimodLocation);
             Loaders.UpdatePsiMod(psimodLocation);
         }
@@ -46,8 +46,12 @@ namespace Test
         [Test]
         public void TestUpdateElements()
         {
-            var elementLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "elements.dat");
-            Loaders.LoadElements(elementLocation);
+            var elementLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "lal.dat");
+            try
+            {
+                Loaders.LoadElements(elementLocation);
+            }
+            catch { }
             Loaders.UpdateElements(elementLocation);
             Assert.Throws<ArgumentException>(() => { Loaders.LoadElements(elementLocation); });
             Assert.AreEqual(ValidationResult.PassedAbundanceValidation, PeriodicTable.ValidateAbundances(1e-15).ThisValidationResult);
@@ -60,6 +64,36 @@ namespace Test
             var uniprotLocation = Path.Combine(TestContext.CurrentContext.TestDirectory, "ptmlist.txt");
             Loaders.UpdateUniprot(uniprotLocation);
             Loaders.UpdateUniprot(uniprotLocation);
+        }
+
+        [Test]
+        public void FilesEqualHash()
+        {
+            var fake = Path.Combine(TestContext.CurrentContext.TestDirectory, "fake.txt");
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdateUniprot(fake);
+            fake = Path.Combine(TestContext.CurrentContext.TestDirectory, "fake1.txt");
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdateUnimod(fake);
+            fake = Path.Combine(TestContext.CurrentContext.TestDirectory, "fake2.txt");
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdatePsiMod(fake);
+            fake = Path.Combine(TestContext.CurrentContext.TestDirectory, "fake3.txt");
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdateElements(fake);
+        }
+
+        [Test]
+        public void FilesLoading()
+        {
+            Loaders.LoadElements(Path.Combine(TestContext.CurrentContext.TestDirectory, "elements.dat"));
+            Loaders.LoadUnimod(Path.Combine(TestContext.CurrentContext.TestDirectory, "unimod_tables.xml"));
+            Loaders.LoadPsiMod(Path.Combine(TestContext.CurrentContext.TestDirectory, "PSI-MOD.obo.xml"));
+            Loaders.LoadUniprot(Path.Combine(TestContext.CurrentContext.TestDirectory, "ptmlist.txt"));
         }
     }
 }
