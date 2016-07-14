@@ -191,8 +191,7 @@ namespace UsefulProteomicsDatabases
                                 break;
                             case "//":
                                 // Only mod_res, not intrachain. 
-                                //Console.WriteLine("Considering adding, feature_type = " + feature_type + " chemical formula = " + chemicalFormulaLine);
-                                if (feature_type == "MOD_RES" && !String.IsNullOrEmpty(chemicalFormulaLine) && !modifications.ContainsKey(psimod_accession_number))
+                                if (feature_type == "MOD_RES" && !string.IsNullOrEmpty(chemicalFormulaLine) && !modifications.ContainsKey(psimod_accession_number))
                                     modifications.Add(psimod_accession_number, new ChemicalFormulaModification(chemicalFormulaLine));
                                 feature_type = null;
                                 chemicalFormulaLine = null;
