@@ -28,7 +28,7 @@ namespace UsefulProteomicsDatabases
 {
     public static class Loaders
     {
-        static bool FilesAreEqual_Hash(string first, string second)
+        private static bool FilesAreEqual_Hash(string first, string second)
         {
             using (FileStream a = File.Open(first, FileMode.Open, FileAccess.Read))
             using (FileStream b = File.Open(second, FileMode.Open, FileAccess.Read))

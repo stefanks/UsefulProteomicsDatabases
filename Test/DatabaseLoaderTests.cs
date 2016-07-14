@@ -61,5 +61,31 @@ namespace Test
             Loaders.UpdateUniprot(uniprotLocation);
             Loaders.UpdateUniprot(uniprotLocation);
         }
+
+        [Test]
+        public void FilesEqualHash()
+        {
+            var fake = Path.Combine(TestContext.CurrentContext.TestDirectory, "fake.txt");
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdateUniprot(fake);
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdateUnimod(fake);
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdatePsiMod(fake);
+            using (StreamWriter file = new StreamWriter(fake))
+                file.WriteLine("fake");
+            Loaders.UpdateElements(fake);
+        }
+
+        [Test]
+        public void FilesLoading()
+        {
+            Loaders.LoadUniprot(Path.Combine(TestContext.CurrentContext.TestDirectory, "ptmlist.txt"));
+            Loaders.LoadUnimod(Path.Combine(TestContext.CurrentContext.TestDirectory, "unimod_tables.xml"));
+            Loaders.LoadPsiMod(Path.Combine(TestContext.CurrentContext.TestDirectory, "PSI-MOD.obo.xml"));
+        }
     }
 }
