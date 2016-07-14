@@ -30,18 +30,18 @@ namespace UsefulProteomicsDatabases
     {
         static bool FilesAreEqual_Hash(string first, string second)
         {
-            var a = File.Open(first, FileMode.Open, FileAccess.Read);
-            var b = File.Open(second, FileMode.Open, FileAccess.Read);
-            byte[] firstHash = MD5.Create().ComputeHash(a);
-            byte[] secondHash = MD5.Create().ComputeHash(b);
-            a.Close();
-            b.Close();
-            for (int i = 0; i < firstHash.Length; i++)
+            using (FileStream a = File.Open(first, FileMode.Open, FileAccess.Read))
+            using (FileStream b = File.Open(second, FileMode.Open, FileAccess.Read))
             {
-                if (firstHash[i] != secondHash[i])
-                    return false;
+                byte[] firstHash = MD5.Create().ComputeHash(a);
+                byte[] secondHash = MD5.Create().ComputeHash(b);
+                for (int i = 0; i < firstHash.Length; i++)
+                {
+                    if (firstHash[i] != secondHash[i])
+                        return false;
+                }
+                return true;
             }
-            return true;
         }
 
         public static void UpdateUniprot(string uniprotLocation)
@@ -206,26 +206,26 @@ namespace UsefulProteomicsDatabases
 
         private static void DownloadPsiMod(string psimodLocation)
         {
-            WebClient Client = new WebClient();
-            Client.DownloadFile(URLs.psimodURI, psimodLocation + ".temp");
+            using (WebClient Client = new WebClient())
+                Client.DownloadFile(URLs.psimodURI, psimodLocation + ".temp");
         }
 
         private static void DownloadUnimod(string unimodLocation)
         {
-            WebClient Client = new WebClient();
-            Client.DownloadFile(URLs.unimodURI, unimodLocation + ".temp");
+            using (WebClient Client = new WebClient())
+                Client.DownloadFile(URLs.unimodURI, unimodLocation + ".temp");
         }
 
         private static void DownloadElements(string elementLocation)
         {
-            WebClient Client = new WebClient();
-            Client.DownloadFile(URLs.elementURI, elementLocation + ".temp");
+            using (WebClient Client = new WebClient())
+                Client.DownloadFile(URLs.elementURI, elementLocation + ".temp");
         }
 
         private static void DownloadUniprot(string uniprotLocation)
         {
-            WebClient Client = new WebClient();
-            Client.DownloadFile(URLs.uniprotURI, uniprotLocation + ".temp");
+            using (WebClient Client = new WebClient())
+                Client.DownloadFile(URLs.uniprotURI, uniprotLocation + ".temp");
         }
     }
 }
